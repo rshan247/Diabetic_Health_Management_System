@@ -20,6 +20,24 @@ def calculate_food_carbs(food):
         quantity = int(quantity)
         # print(quantity, food)
     return quantity * food_data.loc[food_data["Food"] == food, "Carbohydrates (g)"].values[0]
+
+
+def time_diff_from_insulin_intake(row):
+    time_format = "%H:%M"
+    if row['Pre-Meal Sugar Time'] is None:
+        return 0
+    else:
+        pre_meal_sugar_time = datetime.strptime(row['Pre-Meal Sugar Time'], time_format)
+        insulin_intake_time = datetime.strptime(row['Insulin Intake Time'], time_format)
+
+        time_diff = abs(insulin_intake_time - pre_meal_sugar_time)
+        print(pre_meal_sugar_time, insulin_intake_time, time_diff)
+
+        hours_diff = round(time_diff.total_seconds() / 3600, 1)
+        print(hours_diff)
+
+        return hours_diff
+
 def update_row(df, index, food_df):
     row = df.iloc[index]
 
@@ -34,9 +52,12 @@ def update_row(df, index, food_df):
 
     actual_bs_reduction = row['Pre-Meal Blood Sugar (mg/dL)'] + expected_bs_increase - row['Post-Meal Blood Sugar (mg/dL)']
 
-    active_insulin = insulin_utilization.plot_insulin_curve(30, 5, 2, 10, row['Time After Meal (hrs)'], False)
+    time_after_insulin = time_diff_from_insulin_intake(row) + row['Time After Meal (hrs)']
+    active_insulin = insulin_utilization.get_insulin_usage(30, time_after_insulin, True)
 
-    isf = calculate_isf(actual_bs_reduction, active_insulin)
+    insulin_to_reduce = insulin_utilization.get_insulin_usage(30, time_diff_from_insulin_intake(row), True)
+
+    isf = calculate_isf(actual_bs_reduction, active_insulin - insulin_to_reduce)
 
     df.at[index, 'Carbohydrates (g)'] = total_carbs
     df.at[index, 'Expected Blood Sugar Increase (mg/dL)'] = expected_bs_increase
@@ -54,7 +75,7 @@ def update_row(df, index, food_df):
     return df
 
 
-isf_data = update_row(isf_data, 1, food_data)
+isf_data = update_row(isf_data, 2, food_data)
 isf_data.to_csv("..\Datasets\ISF.csv", index=False)
 pd.set_option('display.max_columns', None)
 print(isf_data)

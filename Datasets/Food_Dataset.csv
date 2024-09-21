@@ -6,8 +6,10 @@ Chapati,15,30,60,140,3.5,3.5,3
 Idiyappam,10,30,75,70,2.5,1,1
 Sambar,15,100,60,100,0.7,7,7
 Chutney,5,50,50,30,0.1,0.2,0
+Vegetable Biryani,50,150,55,200,0.5,0.6,4
 White Rice,50,150,55,200,0.5,0.6,4
 Wheat Parrota,20,100,70,250,10,7,5
+Soya Chunks Kurma,20,100,,300,10,10,20
 Nutrichoice biscuits,20,50,60,100,5,,
 Vada,7,30,70,250,5,1,6
 Chips,15,50,70,150,10,,
@@ -15,3 +17,5 @@ Coffee with brown sugar,10,200,65,70,1,,
 Tea with brown sugar,10,200,65,50,0.5,,
 Thatthai,5,15,60,100,4,,
 Rice Sambar,15,100,60,200,0.7,7,7
+Laddu,18,30,,200,,,
+Kara Sev,10,25,,100,2,3,2
