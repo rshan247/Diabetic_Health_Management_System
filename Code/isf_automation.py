@@ -8,7 +8,7 @@ isf_data = pd.read_csv("..\Datasets\ISF.csv")
 def calculate_isf(actual_bs_reduction, active_insulin):
     if active_insulin == 0:
         return None
-    return actual_bs_reduction / active_insulin
+    return round(actual_bs_reduction / active_insulin, 2)
 
 def estimate_blood_sugar_increase(carbs):
     return carbs * 4
@@ -30,8 +30,11 @@ def time_diff_from_insulin_intake(row):
         pre_meal_sugar_time = datetime.strptime(row['Pre-Meal Sugar Time'], time_format)
         insulin_intake_time = datetime.strptime(row['Insulin Intake Time'], time_format)
 
-        time_diff = abs(insulin_intake_time - pre_meal_sugar_time)
+        time_diff = (pre_meal_sugar_time - insulin_intake_time)
         print(pre_meal_sugar_time, insulin_intake_time, time_diff)
+
+        # if time_diff.total_seconds() < 0:
+        #     return 0
 
         hours_diff = round(time_diff.total_seconds() / 3600, 1)
         print(hours_diff)
@@ -46,16 +49,19 @@ def update_row(df, index, food_df):
     total_carbs = 0
     for food in food_items:
         total_carbs += calculate_food_carbs(food)
-    # print(total_carbs)
+    print("Total carbs: ", total_carbs)
 
     expected_bs_increase = estimate_blood_sugar_increase(total_carbs)
 
     actual_bs_reduction = row['Pre-Meal Blood Sugar (mg/dL)'] + expected_bs_increase - row['Post-Meal Blood Sugar (mg/dL)']
 
     time_after_insulin = time_diff_from_insulin_intake(row) + row['Time After Meal (hrs)']
-    active_insulin = insulin_utilization.get_insulin_usage(30, time_after_insulin, True)
 
-    insulin_to_reduce = insulin_utilization.get_insulin_usage(30, time_diff_from_insulin_intake(row), True)
+    active_insulin = round(insulin_utilization.get_insulin_usage(row['Insulin Dosage (units)'], time_after_insulin, True), 2)
+    print("Active insulin:", active_insulin)
+
+    insulin_to_reduce = round(insulin_utilization.get_insulin_usage(row['Insulin Dosage (units)'], time_diff_from_insulin_intake(row), True), 2)
+    print("Insulin to be reduced:", insulin_to_reduce)
 
     isf = calculate_isf(actual_bs_reduction, active_insulin - insulin_to_reduce)
 
@@ -76,7 +82,8 @@ def update_row(df, index, food_df):
 
 
 isf_data = update_row(isf_data, 2, food_data)
-isf_data.to_csv("..\Datasets\ISF.csv", index=False)
 pd.set_option('display.max_columns', None)
 print(isf_data)
+isf_data.to_csv("..\Datasets\ISF.csv", index=False)
+
 

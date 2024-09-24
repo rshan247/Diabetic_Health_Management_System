@@ -1,4 +1,4 @@
 Date,Time,Pre-Meal Blood Sugar (mg/dL),Pre-Meal Sugar Time,Food Consumed,Carbohydrates (g),Insulin Dosage (units),Insulin Intake Time,Post-Meal Blood Sugar (mg/dL),Time After Meal (hrs),Expected Blood Sugar Increase (mg/dL),Actual Blood Sugar Reduction (mg/dL),Active Insulin (units),Calculated ISF (mg/dL per unit)
-8/2/2024,15:00,266,,"2 Poori,Sambar",40,30.0,,322,3,160,104,23.5,16.0
-9/10/2024,22:21,266,,"2 Poori,Sambar",55,30.0,,322,3,220,164,25.42663234,35.85978917
-09/16/2024,22:41,50,14:15,"2 Laddu,Vegetable Biryani",86,,9:30,250,3,344,144,7.2531848590809815,12.813399939294573
+8/2/2024,15:00,266,,"2 Poori,Sambar",40,30,,322,3,160,104,23.5,16
+9/16/2024,22:41,50,14:15,"2 Laddu,Vegetable Biryani",86,30,9:30,250,3,344,144,7.253184859,12.81339994
+9/21/2024,16:56,137,10:30,"3 Idly,Kara Sev,Chutney",45,25,10:50,169,4,180,148,23.46,22.63

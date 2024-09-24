@@ -20,6 +20,8 @@ def cumulative_insulin_utilization(t1, insulin_type, mu, sigma):
 
 # Plot insulin utilization curve for each insulin type
 def get_insulin_usage(total_units, input_time, chart=True):
+    if input_time < 0:
+        return 0
     # Generate time points
     time_points = np.linspace(0, duration, 1000)
     total_rapid = total_units * 0.3  # 30% of total insulin is rapid-acting
@@ -79,8 +81,9 @@ def get_insulin_usage(total_units, input_time, chart=True):
     print(f"Total insulin used: {total_used:.2f} units, total remaining: {total_left:.2f} units")
 
 # Example: Enter the time to calculate and plot insulin utilization
-input_time = float(input("Enter the time (in hours) to check insulin utilization: "))
-get_insulin_usage(30, input_time, chart=True)
+if __name__ == "__main__":
+    input_time = float(input("Enter the time (in hours) to check insulin utilization: "))
+    get_insulin_usage(30, input_time, chart=True)
 
 
 
