@@ -2,7 +2,7 @@ import pandas as pd
 import insulin_usage_chart as insulin_utilization
 
 food_data = pd.read_csv("..\Datasets\Food_Dataset.csv")
-print(food_data.head())
+# print(food_data.head())
 
 isf_data = pd.read_csv("..\Datasets\ISF.csv")
 
@@ -15,9 +15,13 @@ def food_quantity(food):
     quantity = 1
     if food[0].isdigit():
         quantity, food = food.split()
-    return int(quantity), food
+        food = food.replace("-", " ")
+    try:
+        return int(quantity), food
+    except ValueError:
+        return float(quantity), food
 
-def calculate_carbohydrate(food_items, food_data):
+def calculate_carbohydrate(food_items):
     total_carbs = 0
     for food in food_items:
         quantity, food = food_quantity(food)
@@ -51,14 +55,15 @@ def estimate_current_blood_sugar(pre_meal_sugar, food_items, time_after_meal,  t
 
     return post_meal_sugar
 
-pre_meal_sugar = 50 # 322  # mg/dL
-food_items = ['2 Laddu', 'Vegetable Biryani']
-insulin_dosage = 30  # units
-time_after_meal = 3 # 1.5
-time_after_insulin = 3 # 4.5  # hours
+if __name__ == "__main":
+    pre_meal_sugar = 50 # 322  # mg/dL
+    food_items = ['2 Laddu', 'Vegetable Biryani']
+    insulin_dosage = 30  # units
+    time_after_meal = 3 # 1.5
+    time_after_insulin = 3 # 4.5  # hours
 
 
-# Calculate current blood sugar level
-current_sugar_level = estimate_current_blood_sugar(pre_meal_sugar, food_items, time_after_meal, time_after_insulin)
+    # Calculate current blood sugar level
+    current_sugar_level = estimate_current_blood_sugar(pre_meal_sugar, food_items, time_after_meal, time_after_insulin)
 
-print(f'Estimated Blood Sugar Level: {current_sugar_level:.2f} mg/dL')
+    print(f'Estimated Blood Sugar Level: {current_sugar_level:.2f} mg/dL')

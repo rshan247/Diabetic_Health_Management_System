@@ -1,7 +1,36 @@
-Date,Time,Event,Food Consumed,Carbohydrates (grams),Time After Insulin (hours),Insulin Left,Blood Sugar (mg/dl),Insulin Left (units)
-9/16/2024,17:15,Sugar Checked,,,7.75,7.25,250,
-9/16/2024,18:14,Calculate Blood Sugar,,,,,197.01,4.17
-9/16/2024,18:15,Snack,Coffee With Brown Sugar,10,,,,
-9/16/2024,19:00,Calculate Blood Sugar,,,,,,
-9/16/2024,20:00,Food,"2 Dosa,0.5 Sambar",35,,,,
-9/16/2024,23:00,Calculate Blood Sugar,,,,,,
+Date,Time,Event,Food Consumed,Carbohydrates (grams),Time After Insulin (hours),Blood Sugar (mg/dl),Insulin Left (units)
+2024-09-16,17:15,Sugar Checked,,,7.75,250.0,
+2024-09-16,18:14,Calculate Blood Sugar,,,,197.01,4.17
+2024-09-16,18:15,Snack,Coffee With Brown Sugar,10.0,,192.04,3.88
+2024-09-16,18:45,Calculate Blood Sugar,,,,214.55,2.87
+2024-09-16,20:00,Food,"2 Dosa,0.5 Sambar",37.5,,180.08,20.86
+2024-09-16,22:00,Calculate Blood Sugar,,,,297.67,18.97
+2024-09-16,23:30,Calculate Blood Sugar,,,,234.74,15.3
+2024-10-01,23:30,Sugar Checked,,,,336.0,
+2024-10-02,10:30,Sugar Checked,,,,156.0,
+2024-10-02,10:30,Calculate Blood Sugar,,,,70.78,0.0
+2024-10-02,10:45,Food,"3 Idly,1.5 Chutney",37.5,,156.0,27.0
+2024-10-02,12:45,Calculate Blood Sugar,,,,284.42,25.61
+2024-10-02,15:00,Food,"0.5 White-Rice,Sambar,Siru Paruppu Payasam,2 Vada",84.0,,171.22,18.32
+2024-10-02,17:00,Calculate Blood Sugar,,,,415.45,12.41
+2024-10-02,18:00,Snack,Coffee With Brown Sugar,10.0,,358.0,8.71
+2024-10-02,18:30,Calculate Blood Sugar,,,,364.15,6.53
+2024-10-02,20:15,Food,0.9 White-Rice,45.0,,293.96,22.0
+2024-10-02,22:15,Calculate Blood Sugar,,,,425.36,18.87
+2024-10-02,23:15,Calculate Blood Sugar,,,,382.81,16.13
+2024-10-02,23:15,Sugar Checked,,,,420.0,
+2024-10-03,7:30,Calculate Blood Sugar,,,,136.38,0.26
+2024-10-03,7:30,Sugar Checked,,,,74.0,
+2024-10-03,8:15,Food,"2 Dosa,0.5 Sambar",37.5,,71.2,0.0
+2024-10-03,10:15,Calculate Blood Sugar,,,,206.76,24.07
+2024-10-03,12:50,Food,"0.9 White-Rice,0.5 Puffs",55.0,,92.16,16.69
+2024-10-03,14:50,Calculate Blood Sugar,,,,226.29,11.16
+2024-10-03,17:00,Snack,Apple,8.0,,114.8,3.98
+2024-10-03,17:30,Calculate Blood Sugar,,,,128.32,2.79
+2024-10-03,20:30,Food,"0.9 White-Rice,2.5 Thatthai",57.5,,86.86,16.12
+2024-10-03,22:30,Calculate Blood Sugar,,,,302.26,15.18
+2024-10-04,7:30,Calculate Blood Sugar,,,,70.73,0.26
+2024-10-04,8:00,Snack,Coffee With Brown Sugar,10.0,,68.87,0.15
+2024-10-04,8:30,Food,"2 Dosa,0.5 Sambar,Thatthai",42.5,,107.78,22.08
+2024-10-04,08:30,Calculate Blood Sugar,,,,107.78,22.08
+2024-10-04,10:30,Calculate Blood Sugar,,,,258.99,20.87

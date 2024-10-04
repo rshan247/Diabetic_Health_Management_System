@@ -2,8 +2,6 @@ import pandas as pd
 from datetime import datetime
 import insulin_usage_chart as insulin_utilization
 
-food_data = pd.read_csv("..\Datasets\Food_Dataset.csv")
-isf_data = pd.read_csv("..\Datasets\ISF.csv")
 
 def calculate_isf(actual_bs_reduction, active_insulin):
     if active_insulin == 0:
@@ -13,7 +11,7 @@ def calculate_isf(actual_bs_reduction, active_insulin):
 def estimate_blood_sugar_increase(carbs):
     return carbs * 4
 
-def calculate_food_carbs(food):
+def calculate_food_carbs(food, food_data):
     quantity = 1
     if food[0].isdigit():
         quantity, food = food.split()
@@ -43,13 +41,14 @@ def time_diff_from_insulin_intake(row):
 
 def update_row(df, index, food_df):
     row = df.iloc[index]
-
-    food_items = row['Food Consumed'].split(",")
-    # print(food_items)
     total_carbs = 0
-    for food in food_items:
-        total_carbs += calculate_food_carbs(food)
-    print("Total carbs: ", total_carbs)
+    if row['Food Consumed']:
+        food_items = row['Food Consumed'].split(",") if row['Food Consumed'] != "None" else []
+        # print(food_items)
+
+        for food in food_items:
+            total_carbs += calculate_food_carbs(food, food_data)
+        print("Total carbs: ", total_carbs)
 
     expected_bs_increase = estimate_blood_sugar_increase(total_carbs)
 
@@ -80,10 +79,14 @@ def update_row(df, index, food_df):
 
     return df
 
+if __name__ == "__main__":
+    food_data = pd.read_csv("..\Datasets\Food_Dataset.csv")
+    isf_data = pd.read_csv("..\Datasets\ISF.csv")
+    isf_data['Food Consumed'] = isf_data['Food Consumed'].fillna("")
 
-isf_data = update_row(isf_data, 2, food_data)
-pd.set_option('display.max_columns', None)
-print(isf_data)
-isf_data.to_csv("..\Datasets\ISF.csv", index=False)
+    isf_data = update_row(isf_data, 3, food_data)
+    pd.set_option('display.max_columns', None)
+    print(isf_data)
+    isf_data.to_csv("..\Datasets\ISF.csv", index=False)
 
 

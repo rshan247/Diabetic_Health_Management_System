@@ -1,3 +1,7 @@
-Date,Morning Insulin Time,Morning Insulin Dosage (units),Night Insulin Dosage (units),Night Insulin Time
-9/15/2024,9/15/2024 9:00,30,17,9/15/2024 20:00
-9/16/2024,9/16/2024 9:30,30,20,9/16/2024 20:00
+Date,Morning Insulin Time,Morning Insulin Dosage (units),Night Insulin Dosage (units),Night Insulin Time,Basalog Insulin Dosage
+9/15/2024,9/15/2024 9:00,30,17,9/15/2024 20:00,
+9/16/2024,9/16/2024 9:30,30,20,9/16/2024 20:00,
+10/1/2024,10/1/2024 8:45,27,18,10/1/2024 21:30,13
+10/2/2024,10/2/2024 10:45,27,20,10/2/2024 20:00,20
+10/3/2024,10/3/2024 8:30,25,16,10/3/2024 20:30,13
+10/4/2024,10/4/2024 8:30,22,16,10/4/2024 20:30,15

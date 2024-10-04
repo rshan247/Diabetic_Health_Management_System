@@ -83,7 +83,7 @@ def get_insulin_usage(total_units, input_time, chart=True):
 # Example: Enter the time to calculate and plot insulin utilization
 if __name__ == "__main__":
     input_time = float(input("Enter the time (in hours) to check insulin utilization: "))
-    get_insulin_usage(30, input_time, chart=True)
+    get_insulin_usage(18, input_time, chart=True)
 
 
 
